@@ -1,0 +1,16 @@
+﻿@page
+@model PosTechFiapWepApp.Pages.ApagaImagemModel
+@{
+}
+
+<div class="alert alert-warning" role="alert">
+    Confirma a exclusão da imagem @Model.Nome ?
+</div>
+
+<a class="btn btn-primary" asp-area="" asp-page="/Index">Home</a>
+
+</br>
+
+<form method="post" asp-route-nome="@Model.Nome">
+    <button type="submit" class="btn btn-danger">Apagar</button>
+</form>

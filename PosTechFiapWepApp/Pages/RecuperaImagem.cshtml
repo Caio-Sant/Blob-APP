@@ -1,0 +1,16 @@
+﻿@page
+@model PosTechFiapWepApp.Pages.RecuperaImagemModel
+@{
+}
+
+<div class="alert alert-warning" role="alert">
+    Confirma a restauração da imagem @Model.Nome ?
+</div>
+
+<a class="btn btn-primary" asp-area="" asp-page="/Deletadas">Deletadas</a>
+
+</br>
+
+<form method="post" asp-route-nome="@Model.Nome">
+    <button type="submit" class="btn btn-danger">Recuperar</button>
+</form>

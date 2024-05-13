@@ -1,0 +1,19 @@
+﻿@page
+@model PosTechFiapWepApp.Pages.UploadModel
+@{
+}
+
+<form enctype="multipart/form-data" method="post">
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Selecione uma imagem para efetuar o upload.</label>
+        <input class="form-control" type="file" id="formFile" name="formFile">
+    </div>
+    <button type="submit">Enviar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Link))
+{
+    <div class="row">
+        <img src="@Model.Link" />
+    </div>
+}

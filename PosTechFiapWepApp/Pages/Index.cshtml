@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    @foreach (var item in Model.Imagens)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@item.ImagemUri" alt="@item.Nome" id="myImg">
+            <div class="card-body">
+                <h5 class="card-title">@item.Nome</h5>
+                <p class="card-text">Imagem armazenada no Azure Storage Blobs, clique na imagem para ve-la em tela cheia.</p>
+                <a class="btn btn-primary" asp-area="" asp-page="/ApagaImagem" asp-route-nome="@item.Nome">Excluir</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<div id="myModal" class="modal">
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        $("img").click(function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        });
+    </script>
+}
